@@ -1,0 +1,64 @@
+Question 1
+Part A
+a)	Citing key characteristics, principles and areas of application, Discuss the following programming paradigms.
+1.	Structured Programming
+2.	Object-oriented Programming
+3.	Functional Programing
+b)	Why is Object-oriented programming preferred for reusable and modular software
+Part B 
+Next AI Inc. is a tech company that employs hourly contractors to work on short-term projects. Due to varying project requirements, contractors may work overtime, but their pay structure must comply with company policies and federal regulations. The company has implemented strict guidelines to ensure fairness and legality in payment.
+-	Contractors are paid their base hourly rate for every hour worked up to 48hours.
+-	Any hours worked beyond 48 hours are considered overtime and are paid at double the base hourly rate.
+-	The base hourly rate for all contractors must not fall below UGX 30,000; if the rate is lower, an error message must be displayed, and payment is not calculated.
+-	Contractors are not allowed to work more than 72 hours per week. If this limit is exceeded, an error message is displayed, and payment is not calculated.
+Required
+Write a Java program that:
+a)	Implements a new class called Next AI Inc.
+b)	Contains a method that:
+(i)	Accepts base pay and hours worked as parameters.
+(ii)	Calculates and prints the total weekly pay for the contractor or displays the appropriate error message.
+c)	Test the program with the following contractors:
+Test Cases
+Contractor A:
+Base pay: UGX30,000/hour
+Hours worked: 51 hours
+Expected Outcome: Total pay includes 48 regular hours and 3 overtime hours.
+Contractor B:
+			Base pay: UGX20,000/hour
+Hours worked: 40 hours
+Expected Outcome: Error message displayed due to base pay being below the minimum required rate.
+Contractor C:
+Base pay: UGX35,000/hour
+Hours worked: 96 hours
+Expected Outcome: Error message displayed due to hours worked exceeding the 72-hour limit.
+
+Question Two
+
+Ham Fitness Center, a luxurious city fitness club located in the Central Business District of Uganda, Mr. Richie, the chief Instructor has organized an annual triathlon to promote health and wellness among its members on the evening of Xmas (24 /12/2024). The triathlon consists of three events: swimming, cycling, and running. Participants' times will be recorded separately for each event, and their total times are calculated to determine their overall ranking and each participant has unique attributes (e.g., name, ID) and behaviors (e.g., calculating their total time, displaying their details).
+The following participants and their times (in minutes) for each event were recorded during the triathlon:
+
+Name	Swimming Time	Cycling Time	              Running Time
+Alice	  25 minutes	         40 minutes	                 20 minutes
+Bob	          20 minutes	          35 minutes	                25 minutes
+Charlie	30 minutes	         50 minutes	                 30 minutes
+Diana	28 minutes	         42 minutes	                 18 minutes
+
+Required
+Write a Java program that;
+a)	Implements a class called TriathlonResults with identified private attributes and provide public getter and setter methods for all attributes to ensure proper encapsulation and validation.
+b)	Create a derived class EliteParticipant that inherits from Participant, add a new attribute sponsorName (the name of the participant's sponsor) and override the displayDetails() method to include sponsor information in the output.
+c)	Create another derived class BeginnerParticipant with no additional attributes.
+d)	Implement polymorphism by creating a displayDetails() method in the Participant base class that shows generic details (the participant's name, ID, and total time). Extend this method in the subclasses EliteParticipant and BeginnerParticipant to display specific details.
+The EliteParticipant subclass should override displayDetails() to include sponsor information alongside the base details, while the BeginnerParticipant subclass should retain the base class implementation, showing only the name, ID, and total time
+e)	Includes methods to:
+(i)	Calculate the total time for each participant by summing their times for swimming, cycling, and running.
+(ii)	Determine and print:
+i.	The participant with the fastest total time and their total time.
+ii.	The participant with the second fastest total time and their total time.
+iii.	Sort the results by total time for additional clarity.
+f)	Include functionality to handle scenarios where two participants have the same total time, ensuring that both are properly ranked.
+g)	Ensure the program outputs meaningful error messages if any times are missing or invalid (e.g., negative times).
+
+
+
+

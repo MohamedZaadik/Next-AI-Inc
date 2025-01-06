@@ -1,0 +1,172 @@
+Q1:
+
+Part B 
+
+a) 
+
+import java.util.Scanner;
+
+public class NextAIInc {
+
+    private static final double MIN_BASE_RATE = 30000; // Minimum base hourly rate
+    private static final int REGULAR_HOURS_LIMIT = 48; // Regular hours limit
+    private static final int MAX_HOURS_LIMIT = 72; // Maximum hours limit
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get input from the user
+        System.out.print("Enter base hourly rate (UGX): ");
+        double baseHourlyRate = scanner.nextDouble();
+
+        System.out.print("Enter total hours worked: ");
+        int hoursWorked = scanner.nextInt();
+
+        // Calculate payment
+        calculatePayment(baseHourlyRate, hoursWorked);
+    }
+
+    private static void calculatePayment(double baseHourlyRate, int hoursWorked) {
+        // Check for minimum base hourly rate
+        if (baseHourlyRate < MIN_BASE_RATE) {
+            System.out.println("Error: Base hourly rate must not be below UGX 30,000.");
+            return;
+        }
+
+        // Check for maximum hours limit
+        if (hoursWorked > MAX_HOURS_LIMIT) {
+            System.out.println("Error: Contractors cannot work more than 72 hours per week.");
+            return;
+        }
+
+        // Calculate payment
+        double payment = 0;
+
+        if (hoursWorked <= REGULAR_HOURS_LIMIT) {
+            payment = baseHourlyRate * hoursWorked; // Regular pay
+        } else {
+            int overtimeHours = hoursWorked - REGULAR_HOURS_LIMIT;
+            payment = (baseHourlyRate * REGULAR_HOURS_LIMIT) + (2 * baseHourlyRate * overtimeHours); // Regular + overtime pay
+        }
+
+
+b)  
+  
+(i)Java program that Contains a method that accepts base pay and hours worked as parameters.
+import java.util.Scanner;
+
+public class NextAIInc {
+
+    private static final double MIN_BASE_RATE = 30000; // Minimum base hourly rate
+    private static final int REGULAR_HOURS_LIMIT = 48; // Regular hours limit
+    private static final int MAX_HOURS_LIMIT = 72; // Maximum hours limit
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get input from the user
+        System.out.print("Enter base hourly rate (UGX): ");
+        double baseHourlyRate = scanner.nextDouble();
+
+        System.out.print("Enter total hours worked: ");
+        int hoursWorked = scanner.nextInt();
+
+        // Calculate payment using the new method
+        double payment = calculatePayment(baseHourlyRate, hoursWorked);
+        
+        // Output the payment if valid
+        if (payment >= 0) {
+            System.out.printf("Total payment for the week: UGX %.2f%n", payment);
+        }
+    }
+
+    // Method that accepts base pay and hours worked as parameters
+    private static double calculatePayment(double baseHourlyRate, int hoursWorked) {
+        // Check for minimum base hourly rate
+        if (baseHourlyRate < MIN_BASE_RATE) {
+            System.out.println("Error: Base hourly rate must not be below UGX 30,000.");
+            return -1; // Return -1 to indicate an error
+        }
+
+        // Check for maximum hours limit
+        if (hoursWorked > MAX_HOURS_LIMIT) {
+            System.out.println("Error: Contractors cannot work more than 72 hours per week.");
+            return -1; // Return -1 to indicate an error
+        }
+
+        // Calculate payment
+        double payment = 0;
+        if (hoursWorked <= REGULAR_HOURS_LIMIT) {
+            payment = baseHourlyRate * hoursWorked; // Regular pay
+        } else {
+            int overtimeHours = hoursWorked - REGULAR_HOURS_LIMIT;
+            payment = (baseHourlyRate * REGULAR_HOURS_LIMIT) + (2 * baseHourlyRate * overtimeHours); // Regular + overtime pay
+        }
+
+        return payment; // Return the calculated payment
+    }
+}
+
+
+
+b.
+
+(ii)Java program that contains a method that calculates and prints the total weekly pay for the contractor or displays the appropriate error message.
+
+Contractor A
+
+import java.util.Scanner;
+
+public class NextAIInc {
+
+    private static final double MIN_BASE_RATE = 30000; // Minimum base hourly rate
+    private static final int REGULAR_HOURS_LIMIT = 48; // Regular hours limit
+    private static final int MAX_HOURS_LIMIT = 72; // Maximum hours limit
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get input from the user
+        System.out.print("Enter base hourly rate (UGX): ");
+        double baseHourlyRate = scanner.nextDouble();
+
+        System.out.print("Enter total hours worked: ");
+        int hoursWorked = scanner.nextInt();
+
+        // Calculate payment using the method that accepts parameters
+        double payment = calculatePayment(baseHourlyRate, hoursWorked);
+        
+        // Output the payment if valid
+        if (payment >= 0) {
+            System.out.printf("Total payment for the week: UGX %.2f%n", payment);
+        }
+    }
+
+    // Method that accepts base pay and hours worked as parameters
+    private static double calculatePayment(double baseHourlyRate, int hoursWorked) {
+        // Check for minimum base hourly rate
+        if (baseHourlyRate < MIN_BASE_RATE) {
+            System.out.println("Error: Base hourly rate must not be below UGX 30,000.");
+            return -1; // Return -1 to indicate an error
+        }
+
+        // Check for maximum hours limit
+        if (hoursWorked > MAX_HOURS_LIMIT) {
+            System.out.println("Error: Contractors cannot work more than 72 hours per week.");
+            return -1; // Return -1 to indicate an error
+        }
+
+        // Calculate payment
+        double payment = 0;
+        if (hoursWorked <= REGULAR_HOURS_LIMIT) {
+            payment = baseHourlyRate * hoursWorked; // Regular pay
+        } else {
+            int overtimeHours = hoursWorked - REGULAR_HOURS_LIMIT;
+            payment = (baseHourlyRate * REGULAR_HOURS_LIMIT) + (2 * baseHourlyRate * overtimeHours); // Regular + overtime pay
+        }
+
+        return payment; // Return the calculated payment
+    }
+}
+
+

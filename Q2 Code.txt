@@ -1,0 +1,1363 @@
+Q2:
+
+A) Java program that implements a class called TriathlonResults with the specified attributes for participants in the triathlon.
+public class TriathlonResults {
+    // Private attributes
+    private String name;
+    private String participantId;
+    private int swimmingTime; // in minutes
+    private int cyclingTime;  // in minutes
+    private int runningTime;   // in minutes
+    private int totalTime;     // in minutes
+
+    // Constructor
+    public TriathlonResults(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        this.name = name;
+        this.participantId = participantId;
+        setSwimmingTime(swimmingTime);
+        setCyclingTime(cyclingTime);
+        setRunningTime(runningTime);
+        calculateTotalTime();
+    }
+
+    // Getter and Setter for Name
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter and Setter for Participant ID
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public void setParticipantId(String participantId) {
+        this.participantId = participantId;
+    }
+
+    // Getter and Setter for Swimming Time
+    public int getSwimmingTime() {
+        return swimmingTime;
+    }
+
+    public void setSwimmingTime(int swimmingTime) {
+        if (swimmingTime < 0) {
+            throw new IllegalArgumentException("Swimming time cannot be negative.");
+        }
+        this.swimmingTime = swimmingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    // Getter and Setter for Cycling Time
+    public int getCyclingTime() {
+        return cyclingTime;
+    }
+
+    public void setCyclingTime(int cyclingTime) {
+        if (cyclingTime < 0) {
+            throw new IllegalArgumentException("Cycling time cannot be negative.");
+        }
+        this.cyclingTime = cyclingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    // Getter and Setter for Running Time
+    public int getRunningTime() {
+        return runningTime;
+    }
+
+    public void setRunningTime(int runningTime) {
+        if (runningTime < 0) {
+            throw new IllegalArgumentException("Running time cannot be negative.");
+        }
+        this.runningTime = runningTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    // Getter for Total Time
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    // Method to calculate total time
+    private void calculateTotalTime() {
+        this.totalTime = swimmingTime + cyclingTime + runningTime;
+    }
+
+    // Method to display participant details
+    public void displayDetails() {
+        System.out.printf("Name: %s%nID: %s%nSwimming Time: %d minutes%nCycling Time: %d minutes%nRunning Time: %d minutes%nTotal Time: %d minutes%n",
+                          name, participantId, swimmingTime, cyclingTime, runningTime, totalTime);
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Create participants
+        TriathlonResults alice = new TriathlonResults("Alice", "P001", 25, 40, 20);
+        TriathlonResults bob = new TriathlonResults("Bob", "P002", 20, 35, 25);
+        TriathlonResults charlie = new TriathlonResults("Charlie", "P003", 30, 50, 30);
+        TriathlonResults diana = new TriathlonResults("Diana", "P004", 28, 42, 18);
+
+        // Display details for each participant
+        alice.displayDetails();
+        System.out.println();
+        bob.displayDetails();
+        System.out.println();
+        charlie.displayDetails();
+        System.out.println();
+        diana.displayDetails();
+    }
+}
+
+
+B) 
+
+A derived class Elite Participant that inherits from the Triathlon Results class and adds a new attribute for the sponsor's name:
+// Base class
+public class TriathlonResults {
+    // Private attributes
+    private String name;
+    private String participantId;
+    private int swimmingTime; // in minutes
+    private int cyclingTime;  // in minutes
+    private int runningTime;   // in minutes
+    private int totalTime;     // in minutes
+
+    // Constructor
+    public TriathlonResults(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        this.name = name;
+        this.participantId = participantId;
+        setSwimmingTime(swimmingTime);
+        setCyclingTime(cyclingTime);
+        setRunningTime(runningTime);
+        calculateTotalTime();
+    }
+
+    // Getter and Setter methods
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public void setParticipantId(String participantId) {
+        this.participantId = participantId;
+    }
+
+    public int getSwimmingTime() {
+        return swimmingTime;
+    }
+
+    public void setSwimmingTime(int swimmingTime) {
+        if (swimmingTime < 0) {
+            throw new IllegalArgumentException("Swimming time cannot be negative.");
+        }
+        this.swimmingTime = swimmingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public int getCyclingTime() {
+        return cyclingTime;
+    }
+
+    public void setCyclingTime(int cyclingTime) {
+        if (cyclingTime < 0) {
+            throw new IllegalArgumentException("Cycling time cannot be negative.");
+        }
+        this.cyclingTime = cyclingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public int getRunningTime() {
+        return runningTime;
+    }
+
+    public void setRunningTime(int runningTime) {
+        if (runningTime < 0) {
+            throw new IllegalArgumentException("Running time cannot be negative.");
+        }
+        this.runningTime = runningTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    private void calculateTotalTime() {
+        this.totalTime = swimmingTime + cyclingTime + runningTime;
+    }
+
+    public void displayDetails() {
+        System.out.printf("Name: %s%nID: %s%nSwimming Time: %d minutes%nCycling Time: %d minutes%nRunning Time: %d minutes%nTotal Time: %d minutes%n",
+                          name, participantId, swimmingTime, cyclingTime, runningTime, totalTime);
+    }
+}
+
+// Derived class
+class EliteParticipant extends TriathlonResults {
+    private String sponsorName; // New attribute for sponsor's name
+
+    // Constructor
+    public EliteParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime, String sponsorName) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+        this.sponsorName = sponsorName;
+    }
+
+    // Getter and Setter for Sponsor Name
+    public String getSponsorName() {
+        return sponsorName;
+    }
+
+    public void setSponsorName(String sponsorName) {
+        this.sponsorName = sponsorName;
+    }
+
+    // Overriding displayDetails method
+    @Override
+    public void displayDetails() {
+        super.displayDetails(); // Call the base class method
+        System.out.printf("Sponsor Name: %s%n", sponsorName); // Add sponsor information
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Create participants
+        TriathlonResults alice = new TriathlonResults("Alice", "P001", 25, 40, 20);
+        EliteParticipant bob = new EliteParticipant("Bob", "P002", 20, 35, 25, "Fitness Inc.");
+        TriathlonResults charlie = new TriathlonResults("Charlie", "P003", 30, 50, 30);
+        EliteParticipant diana = new EliteParticipant("Diana", "P004", 28, 42, 18, "Health Corp.");
+
+        // Display details for each participant
+        alice.displayDetails();
+        System.out.println();
+        bob.displayDetails();
+        System.out.println();
+        charlie.displayDetails();
+        System.out.println();
+        diana.displayDetails();
+    }
+}
+
+
+C)
+Java code that creates a derived class called BeginnerParticipant that inherits from the TriathlonResults class without adding any additional attributes
+// Base class
+public class TriathlonResults {
+    // Private attributes
+    private String name;
+    private String participantId;
+    private int swimmingTime; // in minutes
+    private int cyclingTime;  // in minutes
+    private int runningTime;   // in minutes
+    private int totalTime;     // in minutes
+
+    // Constructor
+    public TriathlonResults(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        this.name = name;
+        this.participantId = participantId;
+        setSwimmingTime(swimmingTime);
+        setCyclingTime(cyclingTime);
+        setRunningTime(runningTime);
+        calculateTotalTime();
+    }
+
+    // Getter and Setter methods
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public void setParticipantId(String participantId) {
+        this.participantId = participantId;
+    }
+
+    public int getSwimmingTime() {
+        return swimmingTime;
+    }
+
+    public void setSwimmingTime(int swimmingTime) {
+        if (swimmingTime < 0) {
+            throw new IllegalArgumentException("Swimming time cannot be negative.");
+        }
+        this.swimmingTime = swimmingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public int getCyclingTime() {
+        return cyclingTime;
+    }
+
+    public void setCyclingTime(int cyclingTime) {
+        if (cyclingTime < 0) {
+            throw new IllegalArgumentException("Cycling time cannot be negative.");
+        }
+        this.cyclingTime = cyclingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public int getRunningTime() {
+        return runningTime;
+    }
+
+    public void setRunningTime(int runningTime) {
+        if (runningTime < 0) {
+            throw new IllegalArgumentException("Running time cannot be negative.");
+        }
+        this.runningTime = runningTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    private void calculateTotalTime() {
+        this.totalTime = swimmingTime + cyclingTime + runningTime;
+    }
+
+    public void displayDetails() {
+        System.out.printf("Name: %s%nID: %s%nSwimming Time: %d minutes%nCycling Time: %d minutes%nRunning Time: %d minutes%nTotal Time: %d minutes%n",
+                          name, participantId, swimmingTime, cyclingTime, runningTime, totalTime);
+    }
+}
+
+// Derived class for Elite Participants
+class EliteParticipant extends TriathlonResults {
+    private String sponsorName; // New attribute for sponsor's name
+
+    // Constructor
+    public EliteParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime, String sponsorName) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+        this.sponsorName = sponsorName;
+    }
+
+    // Getter and Setter for Sponsor Name
+    public String getSponsorName() {
+        return sponsorName;
+    }
+
+    public void setSponsorName(String sponsorName) {
+        this.sponsorName = sponsorName;
+    }
+
+    // Overriding displayDetails method
+    @Override
+    public void displayDetails() {
+        super.displayDetails(); // Call the base class method
+        System.out.printf("Sponsor Name: %s%n", sponsorName); // Add sponsor information
+    }
+}
+
+// Derived class for Beginner Participants
+class BeginnerParticipant extends TriathlonResults {
+    // Constructor
+    public BeginnerParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+    }
+
+    // displayDetails method inherits from TriathlonResults
+}
+
+// Main method for testing
+class Main {
+    public static void main(String[] args) {
+        // Create participants
+        TriathlonResults alice = new TriathlonResults("Alice", "P001", 25, 40, 20);
+        EliteParticipant bob = new EliteParticipant("Bob", "P002", 20, 35, 25, "Fitness Inc.");
+        BeginnerParticipant charlie = new BeginnerParticipant("Charlie", "P003", 30, 50, 30);
+        BeginnerParticipant diana = new BeginnerParticipant("Diana", "P004", 28, 42, 18);
+
+        // Display details for each participant
+        alice.displayDetails();
+        System.out.println();
+        bob.displayDetails();
+        System.out.println();
+        charlie.displayDetails();
+        System.out.println();
+        diana.displayDetails();
+    }
+}
+
+
+
+D)
+Java code that implements polymorphism in the TriathlonResults class hierarchy, we can modify the displayDetails() method in the base class to show generic details (name, ID, and total time) and then extend this method in the EliteParticipant subclass to include sponsor information.
+// Base class
+public class TriathlonResults {
+    // Private attributes
+    private String name;
+    private String participantId;
+    private int swimmingTime; // in minutes
+    private int cyclingTime;  // in minutes
+    private int runningTime;   // in minutes
+    private int totalTime;     // in minutes
+
+    // Constructor
+    public TriathlonResults(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        this.name = name;
+        this.participantId = participantId;
+        setSwimmingTime(swimmingTime);
+        setCyclingTime(cyclingTime);
+        setRunningTime(runningTime);
+        calculateTotalTime();
+    }
+
+    // Getter and Setter methods
+    public String getName() {
+        return name;
+    }
+
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void setSwimmingTime(int swimmingTime) {
+        if (swimmingTime < 0) {
+            throw new IllegalArgumentException("Swimming time cannot be negative.");
+        }
+        this.swimmingTime = swimmingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setCyclingTime(int cyclingTime) {
+        if (cyclingTime < 0) {
+            throw new IllegalArgumentException("Cycling time cannot be negative.");
+        }
+        this.cyclingTime = cyclingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setRunningTime(int runningTime) {
+        if (runningTime < 0) {
+            throw new IllegalArgumentException("Running time cannot be negative.");
+        }
+        this.runningTime = runningTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    private void calculateTotalTime() {
+        this.totalTime = swimmingTime + cyclingTime + runningTime;
+    }
+
+    // Display generic details
+    public void displayDetails() {
+        System.out.printf("Name: %s%nID: %s%nTotal Time: %d minutes%n",
+                          name, participantId, totalTime);
+    }
+}
+
+// Derived class for Elite Participants
+class EliteParticipant extends TriathlonResults {
+    private String sponsorName; // New attribute for sponsor's name
+
+    // Constructor
+    public EliteParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime, String sponsorName) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+        this.sponsorName = sponsorName;
+    }
+
+    // Overriding displayDetails method to include sponsor information
+    @Override
+    public void displayDetails() {
+        super.displayDetails(); // Call the base class method
+        System.out.printf("Sponsor Name: %s%n", sponsorName); // Add sponsor information
+    }
+}
+
+// Derived class for Beginner Participants
+class BeginnerParticipant extends TriathlonResults {
+    // Constructor
+    public BeginnerParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+    }
+
+    // displayDetails method inherits from TriathlonResults
+}
+
+// Main class for testing
+class Main {
+    public static void main(String[] args) {
+        // Create participants
+        TriathlonResults alice = new TriathlonResults("Alice", "P001", 25, 40, 20);
+        EliteParticipant bob = new EliteParticipant("Bob", "P002", 20, 35, 25, "Fitness Inc.");
+        BeginnerParticipant charlie = new BeginnerParticipant("Charlie", "P003", 30, 50, 30);
+        BeginnerParticipant diana = new BeginnerParticipant("Diana", "P004", 28, 42, 18);
+
+        // Display details for each participant
+        alice.displayDetails();
+        System.out.println();
+        bob.displayDetails();
+        System.out.println();
+        charlie.displayDetails();
+        System.out.println();
+        diana.displayDetails();
+    }
+}
+
+E)
+
+.i)Java program to include a method that calculates the total time for each participant by summing their times for swimming, cycling.
+// Base class
+public class TriathlonResults {
+    // Private attributes
+    private String name;
+    private String participantId;
+    private int swimmingTime; // in minutes
+    private int cyclingTime;  // in minutes
+    private int runningTime;   // in minutes
+    private int totalTime;     // in minutes
+
+    // Constructor
+    public TriathlonResults(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        this.name = name;
+        this.participantId = participantId;
+        setSwimmingTime(swimmingTime);
+        setCyclingTime(cyclingTime);
+        setRunningTime(runningTime);
+        calculateTotalTime();
+    }
+
+    // Getter and Setter methods
+    public String getName() {
+        return name;
+    }
+
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void setSwimmingTime(int swimmingTime) {
+        if (swimmingTime < 0) {
+            throw new IllegalArgumentException("Swimming time cannot be negative.");
+        }
+        this.swimmingTime = swimmingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setCyclingTime(int cyclingTime) {
+        if (cyclingTime < 0) {
+            throw new IllegalArgumentException("Cycling time cannot be negative.");
+        }
+        this.cyclingTime = cyclingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setRunningTime(int runningTime) {
+        if (runningTime < 0) {
+            throw new IllegalArgumentException("Running time cannot be negative.");
+        }
+        this.runningTime = runningTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    // Method to calculate total time
+    private void calculateTotalTime() {
+        this.totalTime = swimmingTime + cyclingTime + runningTime;
+    }
+
+    // Method to get individual times
+    public void displayTimes() {
+        System.out.printf("Swimming Time: %d minutes%nCycling Time: %d minutes%nRunning Time: %d minutes%n", 
+                          swimmingTime, cyclingTime, runningTime);
+    }
+
+    // Display generic details
+    public void displayDetails() {
+        System.out.printf("Name: %s%nID: %s%nTotal Time: %d minutes%n",
+                          name, participantId, totalTime);
+    }
+}
+
+// Derived class for Elite Participants
+class EliteParticipant extends TriathlonResults {
+    private String sponsorName; // New attribute for sponsor's name
+
+    // Constructor
+    public EliteParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime, String sponsorName) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+        this.sponsorName = sponsorName;
+    }
+
+    // Overriding displayDetails method to include sponsor information
+    @Override
+    public void displayDetails() {
+        super.displayDetails(); // Call the base class method
+        System.out.printf("Sponsor Name: %s%n", sponsorName); // Add sponsor information
+    }
+}
+
+// Derived class for Beginner Participants
+class BeginnerParticipant extends TriathlonResults {
+    // Constructor
+    public BeginnerParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+    }
+}
+
+// Main class for testing
+class Main {
+    public static void main(String[] args) {
+        // Create participants
+        TriathlonResults alice = new TriathlonResults("Alice", "P001", 25, 40, 20);
+        EliteParticipant bob = new EliteParticipant("Bob", "P002", 20, 35, 25, "Fitness Inc.");
+        BeginnerParticipant charlie = new BeginnerParticipant("Charlie", "P003", 30, 50, 30);
+        BeginnerParticipant diana = new BeginnerParticipant("Diana", "P004", 28, 42, 18);
+
+        // Display details for each participant
+        alice.displayDetails();
+        alice.displayTimes();
+        System.out.println();
+        bob.displayDetails();
+        bob.displayTimes();
+        System.out.println();
+        charlie.displayDetails();
+        charlie.displayTimes();
+        System.out.println();
+        diana.displayDetails();
+        diana.displayTimes();
+    }
+}
+
+e.ii.i)
+Java code to determine and print the participant with the fastest total time:
+// Base class
+public class TriathlonResults {
+    // Private attributes
+    private String name;
+    private String participantId;
+    private int swimmingTime; // in minutes
+    private int cyclingTime;  // in minutes
+    private int runningTime;   // in minutes
+    private int totalTime;     // in minutes
+
+    // Constructor
+    public TriathlonResults(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        this.name = name;
+        this.participantId = participantId;
+        setSwimmingTime(swimmingTime);
+        setCyclingTime(cyclingTime);
+        setRunningTime(runningTime);
+        calculateTotalTime();
+    }
+
+    // Getter and Setter methods
+    public String getName() {
+        return name;
+    }
+
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void setSwimmingTime(int swimmingTime) {
+        if (swimmingTime < 0) {
+            throw new IllegalArgumentException("Swimming time cannot be negative.");
+        }
+        this.swimmingTime = swimmingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setCyclingTime(int cyclingTime) {
+        if (cyclingTime < 0) {
+            throw new IllegalArgumentException("Cycling time cannot be negative.");
+        }
+        this.cyclingTime = cyclingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setRunningTime(int runningTime) {
+        if (runningTime < 0) {
+            throw new IllegalArgumentException("Running time cannot be negative.");
+        }
+        this.runningTime = runningTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    // Method to calculate total time
+    private void calculateTotalTime() {
+        this.totalTime = swimmingTime + cyclingTime + runningTime;
+    }
+
+    // Method to get individual times
+    public void displayTimes() {
+        System.out.printf("Swimming Time: %d minutes%nCycling Time: %d minutes%nRunning Time: %d minutes%n", 
+                          swimmingTime, cyclingTime, runningTime);
+    }
+
+    // Display generic details
+    public void displayDetails() {
+        System.out.printf("Name: %s%nID: %s%nTotal Time: %d minutes%n",
+                          name, participantId, totalTime);
+    }
+}
+
+// Derived class for Elite Participants
+class EliteParticipant extends TriathlonResults {
+    private String sponsorName; // New attribute for sponsor's name
+
+    // Constructor
+    public EliteParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime, String sponsorName) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+        this.sponsorName = sponsorName;
+    }
+
+    // Overriding displayDetails method to include sponsor information
+    @Override
+    public void displayDetails() {
+        super.displayDetails(); // Call the base class method
+        System.out.printf("Sponsor Name: %s%n", sponsorName); // Add sponsor information
+    }
+}
+
+// Derived class for Beginner Participants
+class BeginnerParticipant extends TriathlonResults {
+    // Constructor
+    public BeginnerParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+    }
+}
+
+// Main class for testing
+class Main {
+    public static void main(String[] args) {
+        // Create participants
+        TriathlonResults alice = new TriathlonResults("Alice", "P001", 25, 40, 20);
+        EliteParticipant bob = new EliteParticipant("Bob", "P002", 20, 35, 25, "Fitness Inc.");
+        BeginnerParticipant charlie = new BeginnerParticipant("Charlie", "P003", 30, 50, 30);
+        BeginnerParticipant diana = new BeginnerParticipant("Diana", "P004", 28, 42, 18);
+
+        // Store participants in an array for easy access
+        TriathlonResults[] participants = {alice, bob, charlie, diana};
+
+        // Display details for each participant
+        for (TriathlonResults participant : participants) {
+            participant.displayDetails();
+            participant.displayTimes();
+            System.out.println();
+        }
+
+        // Determine the participant with the fastest total time
+        TriathlonResults fastestParticipant = participants[0]; // Start with the first participant
+        for (TriathlonResults participant : participants) {
+            if (participant.getTotalTime() < fastestParticipant.getTotalTime()) {
+                fastestParticipant = participant; // Update if a faster participant is found
+            }
+        }
+
+        // Print the fastest participant's details
+        System.out.printf("The participant with the fastest total time is %s (ID: %s) with a total time of %d minutes.%n",
+                          fastestParticipant.getName(), fastestParticipant.getParticipantId(), fastestParticipant.getTotalTime());
+    }
+}
+
+E)
+.ii.ii)
+Java code to determine and print the participant with the second fastest total time.
+import java.util.Arrays;
+import java.util.Comparator;
+
+// Base class
+public class TriathlonResults {
+    // Private attributes
+    private String name;
+    private String participantId;
+    private int swimmingTime; // in minutes
+    private int cyclingTime;  // in minutes
+    private int runningTime;   // in minutes
+    private int totalTime;     // in minutes
+
+    // Constructor
+    public TriathlonResults(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        this.name = name;
+        this.participantId = participantId;
+        setSwimmingTime(swimmingTime);
+        setCyclingTime(cyclingTime);
+        setRunningTime(runningTime);
+        calculateTotalTime();
+    }
+
+    // Getter and Setter methods
+    public String getName() {
+        return name;
+    }
+
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void setSwimmingTime(int swimmingTime) {
+        if (swimmingTime < 0) {
+            throw new IllegalArgumentException("Swimming time cannot be negative.");
+        }
+        this.swimmingTime = swimmingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setCyclingTime(int cyclingTime) {
+        if (cyclingTime < 0) {
+            throw new IllegalArgumentException("Cycling time cannot be negative.");
+        }
+        this.cyclingTime = cyclingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setRunningTime(int runningTime) {
+        if (runningTime < 0) {
+            throw new IllegalArgumentException("Running time cannot be negative.");
+        }
+        this.runningTime = runningTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    // Method to calculate total time
+    private void calculateTotalTime() {
+        this.totalTime = swimmingTime + cyclingTime + runningTime;
+    }
+
+    // Method to get individual times
+    public void displayTimes() {
+        System.out.printf("Swimming Time: %d minutes%nCycling Time: %d minutes%nRunning Time: %d minutes%n", 
+                          swimmingTime, cyclingTime, runningTime);
+    }
+
+    // Display generic details
+    public void displayDetails() {
+        System.out.printf("Name: %s%nID: %s%nTotal Time: %d minutes%n",
+                          name, participantId, totalTime);
+    }
+}
+
+// Derived class for Elite Participants
+class EliteParticipant extends TriathlonResults {
+    private String sponsorName; // New attribute for sponsor's name
+
+    // Constructor
+    public EliteParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime, String sponsorName) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+        this.sponsorName = sponsorName;
+    }
+
+    // Overriding displayDetails method to include sponsor information
+    @Override
+    public void displayDetails() {
+        super.displayDetails(); // Call the base class method
+        System.out.printf("Sponsor Name: %s%n", sponsorName); // Add sponsor information
+    }
+}
+
+// Derived class for Beginner Participants
+class BeginnerParticipant extends TriathlonResults {
+    // Constructor
+    public BeginnerParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+    }
+}
+
+// Main class for testing
+class Main {
+    public static void main(String[] args) {
+        // Create participants
+        TriathlonResults alice = new TriathlonResults("Alice", "P001", 25, 40, 20);
+        EliteParticipant bob = new EliteParticipant("Bob", "P002", 20, 35, 25, "Fitness Inc.");
+        BeginnerParticipant charlie = new BeginnerParticipant("Charlie", "P003", 30, 50, 30);
+        BeginnerParticipant diana = new BeginnerParticipant("Diana", "P004", 28, 42, 18);
+
+        // Store participants in an array for easy access
+        TriathlonResults[] participants = {alice, bob, charlie, diana};
+
+        // Display details for each participant
+        for (TriathlonResults participant : participants) {
+            participant.displayDetails();
+            participant.displayTimes();
+            System.out.println();
+        }
+
+        // Sort participants based on total time
+        Arrays.sort(participants, Comparator.comparingInt(TriathlonResults::getTotalTime));
+
+        // Print the fastest participant's details
+        System.out.printf("The participant with the fastest total time is %s (ID: %s) with a total time of %d minutes.%n",
+                          participants[0].getName(), participants[0].getParticipantId(), participants[0].getTotalTime());
+
+        // Print the second fastest participant's details
+        System.out.printf("The participant with the second fastest total time is %s (ID: %s) with a total time of %d minutes.%n",
+                          participants[1].getName(), participants[1].getParticipantId(), participants[1].getTotalTime());
+    }
+}
+
+E)
+.ii.iii)
+import java.util.Arrays;
+import java.util.Comparator;
+
+// Base class
+public class TriathlonResults {
+    // Private attributes
+    private String name;
+    private String participantId;
+    private int swimmingTime; // in minutes
+    private int cyclingTime;  // in minutes
+    private int runningTime;   // in minutes
+    private int totalTime;     // in minutes
+
+    // Constructor
+    public TriathlonResults(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        this.name = name;
+        this.participantId = participantId;
+        setSwimmingTime(swimmingTime);
+        setCyclingTime(cyclingTime);
+        setRunningTime(runningTime);
+        calculateTotalTime();
+    }
+
+    // Getter and Setter methods
+    public String getName() {
+        return name;
+    }
+
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void setSwimmingTime(int swimmingTime) {
+        if (swimmingTime < 0) {
+            throw new IllegalArgumentException("Swimming time cannot be negative.");
+        }
+        this.swimmingTime = swimmingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setCyclingTime(int cyclingTime) {
+        if (cyclingTime < 0) {
+            throw new IllegalArgumentException("Cycling time cannot be negative.");
+        }
+        this.cyclingTime = cyclingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setRunningTime(int runningTime) {
+        if (runningTime < 0) {
+            throw new IllegalArgumentException("Running time cannot be negative.");
+        }
+        this.runningTime = runningTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    // Method to calculate total time
+    private void calculateTotalTime() {
+        this.totalTime = swimmingTime + cyclingTime + runningTime;
+    }
+
+    // Method to get individual times
+    public void displayTimes() {
+        System.out.printf("Swimming Time: %d minutes%nCycling Time: %d minutes%nRunning Time: %d minutes%n", 
+                          swimmingTime, cyclingTime, runningTime);
+    }
+
+    // Display generic details
+    public void displayDetails() {
+        System.out.printf("Name: %s%nID: %s%nTotal Time: %d minutes%n",
+                          name, participantId, totalTime);
+    }
+}
+
+// Derived class for Elite Participants
+class EliteParticipant extends TriathlonResults {
+    private String sponsorName; // New attribute for sponsor's name
+
+    // Constructor
+    public EliteParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime, String sponsorName) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+        this.sponsorName = sponsorName;
+    }
+
+    // Overriding displayDetails method to include sponsor information
+    @Override
+    public void displayDetails() {
+        super.displayDetails(); // Call the base class method
+        System.out.printf("Sponsor Name: %s%n", sponsorName); // Add sponsor information
+    }
+}
+
+// Derived class for Beginner Participants
+class BeginnerParticipant extends TriathlonResults {
+    // Constructor
+    public BeginnerParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+    }
+}
+
+// Main class for testing
+class Main {
+    public static void main(String[] args) {
+        // Create participants
+        TriathlonResults alice = new TriathlonResults("Alice", "P001", 25, 40, 20);
+        EliteParticipant bob = new EliteParticipant("Bob", "P002", 20, 35, 25, "Fitness Inc.");
+        BeginnerParticipant charlie = new BeginnerParticipant("Charlie", "P003", 30, 50, 30);
+        BeginnerParticipant diana = new BeginnerParticipant("Diana", "P004", 28, 42, 18);
+
+        // Store participants in an array for easy access
+        TriathlonResults[] participants = {alice, bob, charlie, diana};
+
+        // Sort participants based on total time
+        Arrays.sort(participants, Comparator.comparingInt(TriathlonResults::getTotalTime));
+
+        // Display sorted results
+        System.out.println("Results sorted by total time:");
+        for (TriathlonResults participant : participants) {
+            participant.displayDetails();
+            participant.displayTimes();
+            System.out.println();
+        }
+
+        // Print the fastest participant's details
+        System.out.printf("The participant with the fastest total time is %s (ID: %s) with a total time of %d minutes.%n",
+                          participants[0].getName(), participants[0].getParticipantId(), participants[0].getTotalTime());
+
+        // Print the second fastest participant's details
+        System.out.printf("The participant with the second fastest total time is %s (ID: %s) with a total time of %d minutes.%n",
+                          participants[1].getName(), participants[1].getParticipantId(), participants[1].getTotalTime());
+    }
+}
+
+F)
+
+Java code to include functionality to handle scenarios where two participants have the same total time, ensuring that both are properly ranked.
+import java.util.Arrays;
+import java.util.Comparator;
+
+// Base class
+public class TriathlonResults {
+    // Private attributes
+    private String name;
+    private String participantId;
+    private int swimmingTime; // in minutes
+    private int cyclingTime;  // in minutes
+    private int runningTime;   // in minutes
+    private int totalTime;     // in minutes
+
+    // Constructor
+    public TriathlonResults(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        this.name = name;
+        this.participantId = participantId;
+        setSwimmingTime(swimmingTime);
+        setCyclingTime(cyclingTime);
+        setRunningTime(runningTime);
+        calculateTotalTime();
+    }
+
+    // Getter and Setter methods
+    public String getName() {
+        return name;
+    }
+
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void setSwimmingTime(int swimmingTime) {
+        if (swimmingTime < 0) {
+            throw new IllegalArgumentException("Swimming time cannot be negative.");
+        }
+        this.swimmingTime = swimmingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setCyclingTime(int cyclingTime) {
+        if (cyclingTime < 0) {
+            throw new IllegalArgumentException("Cycling time cannot be negative.");
+        }
+        this.cyclingTime = cyclingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setRunningTime(int runningTime) {
+        if (runningTime < 0) {
+            throw new IllegalArgumentException("Running time cannot be negative.");
+        }
+        this.runningTime = runningTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    // Method to calculate total time
+    private void calculateTotalTime() {
+        this.totalTime = swimmingTime + cyclingTime + runningTime;
+    }
+
+    // Method to get individual times
+    public void displayTimes() {
+        System.out.printf("Swimming Time: %d minutes%nCycling Time: %d minutes%nRunning Time: %d minutes%n", 
+                          swimmingTime, cyclingTime, runningTime);
+    }
+
+    // Display generic details
+    public void displayDetails() {
+        System.out.printf("Name: %s%nID: %s%nTotal Time: %d minutes%n",
+                          name, participantId, totalTime);
+    }
+}
+
+// Derived class for Elite Participants
+class EliteParticipant extends TriathlonResults {
+    private String sponsorName; // New attribute for sponsor's name
+
+    // Constructor
+    public EliteParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime, String sponsorName) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+        this.sponsorName = sponsorName;
+    }
+
+    // Overriding displayDetails method to include sponsor information
+    @Override
+    public void displayDetails() {
+        super.displayDetails(); // Call the base class method
+        System.out.printf("Sponsor Name: %s%n", sponsorName); // Add sponsor information
+    }
+}
+
+// Derived class for Beginner Participants
+class BeginnerParticipant extends TriathlonResults {
+    // Constructor
+    public BeginnerParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+    }
+}
+
+// Main class for testing
+class Main {
+    public static void main(String[] args) {
+        // Create participants
+        TriathlonResults alice = new TriathlonResults("Alice", "P001", 25, 40, 20);
+        EliteParticipant bob = new EliteParticipant("Bob", "P002", 20, 35, 25, "Fitness Inc.");
+        BeginnerParticipant charlie = new BeginnerParticipant("Charlie", "P003", 30, 50, 30);
+        BeginnerParticipant diana = new BeginnerParticipant("Diana", "P004", 28, 42, 18);
+        // Adding a participant with the same total time as Alice
+        TriathlonResults eve = new TriathlonResults("Eve", "P005", 25, 40, 20); // Same total time as Alice
+
+        // Store participants in an array for easy access
+        TriathlonResults[] participants = {alice, bob, charlie, diana, eve};
+
+        // Sort participants based on total time
+        Arrays.sort(participants, Comparator.comparingInt(TriathlonResults::getTotalTime));
+
+        // Display sorted results
+        System.out.println("Results sorted by total time:");
+        for (TriathlonResults participant : participants) {
+            participant.displayDetails();
+            participant.displayTimes();
+            System.out.println();
+        }
+
+        // Print the fastest participant's details
+        System.out.printf("The participant with the fastest total time is %s (ID: %s) with a total time of %d minutes.%n",
+                          participants[0].getName(), participants[0].getParticipantId(), participants[0].getTotalTime());
+
+        // Print the second fastest participant's details
+        System.out.printf("The participant with the second fastest total time is %s (ID: %s) with a total time of %d minutes.%n",
+                          participants[1].getName(), participants[1].getParticipantId(), participants[1].getTotalTime());
+    }
+}
+
+G)
+
+Java Program to ensure the program outputs meaningful error messages if any times are missing or invalid (e.g., negative times).
+import java.util.Arrays;
+import java.util.Comparator;
+
+// Base class
+public class TriathlonResults {
+    // Private attributes
+    private String name;
+    private String participantId;
+    private int swimmingTime; // in minutes
+    private int cyclingTime;  // in minutes
+    private int runningTime;   // in minutes
+    private int totalTime;     // in minutes
+
+    // Constructor
+    public TriathlonResults(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Participant name cannot be null or empty.");
+        }
+        if (participantId == null || participantId.isEmpty()) {
+            throw new IllegalArgumentException("Participant ID cannot be null or empty.");
+        }
+        
+        this.name = name;
+        this.participantId = participantId;
+
+        // Validate input times
+        if (swimmingTime < 0 || cyclingTime < 0 || runningTime < 0) {
+            throw new IllegalArgumentException("Times cannot be negative.");
+        }
+
+        setSwimmingTime(swimmingTime);
+        setCyclingTime(cyclingTime);
+        setRunningTime(runningTime);
+        calculateTotalTime();
+    }
+
+    // Getter and Setter methods
+    public String getName() {
+        return name;
+    }
+
+    public String getParticipantId() {
+        return participantId;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void setSwimmingTime(int swimmingTime) {
+        if (swimmingTime < 0) {
+            throw new IllegalArgumentException("Swimming time cannot be negative.");
+        }
+        this.swimmingTime = swimmingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setCyclingTime(int cyclingTime) {
+        if (cyclingTime < 0) {
+            throw new IllegalArgumentException("Cycling time cannot be negative.");
+        }
+        this.cyclingTime = cyclingTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    public void setRunningTime(int runningTime) {
+        if (runningTime < 0) {
+            throw new IllegalArgumentException("Running time cannot be negative.");
+        }
+        this.runningTime = runningTime;
+        calculateTotalTime(); // Recalculate total time
+    }
+
+    // Method to calculate total time
+    private void calculateTotalTime() {
+        this.totalTime = swimmingTime + cyclingTime + runningTime;
+    }
+
+    // Method to get individual times
+    public void displayTimes() {
+        System.out.printf("Swimming Time: %d minutes%nCycling Time: %d minutes%nRunning Time: %d minutes%n", 
+                          swimmingTime, cyclingTime, runningTime);
+    }
+
+    // Display generic details
+    public void displayDetails() {
+        System.out.printf("Name: %s%nID: %s%nTotal Time: %d minutes%n",
+                          name, participantId, totalTime);
+    }
+}
+
+// Derived class for Elite Participants
+class EliteParticipant extends TriathlonResults {
+    private String sponsorName; // New attribute for sponsor's name
+
+    // Constructor
+    public EliteParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime, String sponsorName) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+        this.sponsorName = sponsorName;
+    }
+
+    // Overriding displayDetails method to include sponsor information
+    @Override
+    public void displayDetails() {
+        super.displayDetails(); // Call the base class method
+        System.out.printf("Sponsor Name: %s%n", sponsorName); // Add sponsor information
+    }
+}
+
+// Derived class for Beginner Participants
+class BeginnerParticipant extends TriathlonResults {
+    // Constructor
+    public BeginnerParticipant(String name, String participantId, int swimmingTime, int cyclingTime, int runningTime) {
+        super(name, participantId, swimmingTime, cyclingTime, runningTime);
+    }
+}
+
+// Main class for testing
+class Main {
+    public static void main(String[] args) {
+        try {
+            // Create participants with validation
+            TriathlonResults alice = new TriathlonResults("Alice", "P001", 25, 40, 20);
+            EliteParticipant bob = new EliteParticipant("Bob", "P002", 20, 35, 25, "Fitness Inc.");
+            BeginnerParticipant charlie = new BeginnerParticipant("Charlie", "P003", 30, 50, 30);
+            BeginnerParticipant diana = new BeginnerParticipant("Diana", "P004", 28, 42, 18);
+            // Adding a participant with the same total time as Alice
+            TriathlonResults eve = new TriathlonResults("Eve", "P005", 25, 40, 20); // Same total time as Alice
+
+            // Store participants in an array for easy access
+            TriathlonResults[] participants = {alice, bob, charlie, diana, eve};
+
+            // Sort participants based on total time
+            Arrays.sort(participants, Comparator.comparingInt(TriathlonResults::getTotalTime));
+
+            // Display sorted results
+            System.out.println("Results sorted by total time:");
+            for (TriathlonResults participant : participants) {
+                participant.displayDetails();
+                participant.displayTimes();
+                System.out.println();
+            }
+
+            // Print the fastest participant's details
+            System.out.printf("The participant with the fastest total time is %s (ID: %s) with a total time of %d minutes.%n",
+                              participants[0].getName(), participants[0].getParticipantId(), participants[0].getTotalTime());
+
+            // Print the second fastest participant's details
+            System.out.printf("The participant with the second fastest total time is %s (ID: %s) with a total time of %d minutes.%n",
+                              participants[1].getName(), participants[1].getParticipantId(), participants[1].getTotalTime());
+
+        } catch (IllegalArgumentException e) {
+            // Catch and print the error message
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+
